@@ -38,7 +38,7 @@ const server = app.listen(process.env.PORT || 4444, () => console.log(`Server Po
 
 const io = new Server(server, {
     cors: {
-        origin: 'http://localhost:3000'
+        origin: 'https://wave-link.vercel.app'
     }
 });
 
