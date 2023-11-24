@@ -4,8 +4,22 @@ import { addAudioMessage, addImageMessage, addMessage, getInitialContactsWithMes
 
 const router = Router();
 
-const uploadImage = multer({ dest: 'uploads/images' });
-const uploadAudio = multer({ dest: 'uploads/recordings' });
+const uploadImage = multer({
+    destination: function (req, file, cb) {
+        cb(null, 'uploads/images');
+    },
+    filename: function (req, file, cb) {
+        cb(null, file.originalname);
+    }
+});
+const uploadAudio = multer({
+    destination: function (req, file, cb) {
+        cb(null, 'uploads/recordings');
+    },
+    filename: function (req, file, cb) {
+        cb(null, file.originalname);
+    }
+});
 
 router.post('/add-message', addMessage);
 
